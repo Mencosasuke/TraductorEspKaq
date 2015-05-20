@@ -1,0 +1,164 @@
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 1rem;
+	margin: 0px;
+	padding: 0px;
+	background-color: #F9F9F9;
+	overflow: auto;
+}
+
+.footer {
+	font-family: sans-serif;
+	text-align: center;
+	font-size: 0.8rem;
+	width: 100%;
+	background-color: #C1C1C1;
+	color: #FAFAFA;
+	margin-top: 50px;
+	padding: 7px;
+	display: block;
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.headerDiv h1 {
+	margin: 0;
+	padding: 30px;
+	text-align: center;
+}
+
+.headerDiv{
+	font-family: 'Candal', sans-serif;
+	font-size: 1rem;
+	color: #FFF;
+	background-color: #00648C;
+	width: 100%;
+}
+
+.mainDiv {
+	width: 100%;
+	margin-top: 25px;
+	text-align: center;
+}
+
+table {
+	margin: auto;
+}
+
+table td {
+	width: 400px;
+	padding: 2px 5px;
+}
+
+textarea {
+	margin: 0;
+	font-family: sans-serif;
+	font-size: 1rem;
+	appearance: none;
+	box-shadow: none;
+	border-radius: none;
+	padding: 7px;
+	border: solid 1px #DCDCDC;
+	transition: box-shadow 0.3s, border 0.3s;
+	background-color: #FFF;
+}
+
+textarea {
+	width: 384px;
+	height: 100px;
+	color: #28AADC;
+	display: block;
+	resize: none;
+}
+
+textarea:focus {
+	outline: none;
+}
+
+textarea:focus {
+	border: solid 1px #707070;
+	box-shadow: 0 0 5px 1px #969696;
+}
+
+button, select{
+	outline: 0;
+	background: none;
+	border: 0;
+	box-shadow: none;
+	outline-style: none;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 0.9rem;
+	color: #00648C;
+	background-color: #FFF;
+	border: 2px solid #00648C;
+	border-radius: 0;
+	padding: 7px 10px;
+}
+
+select{
+	display: inline-block;
+	padding: 6px 10px;
+}
+
+select:focus {
+	outline: 0;
+	border: 0;
+	background: none;
+	box-shadow: none;
+	outline-style: none;
+	border: 2px solid #00648C;
+}
+
+button:hover {
+	color: #FFF;
+	background-color: #00648C;
+}
+
+label {
+	display: block;
+	width: 386px;
+	padding: 7px;
+	color: #FFF;
+	background-color: #00648C;
+	text-align: center;
+}
+
+.error,
+.error:hover {
+	border: 1px solid #D6412B;
+}
+
+.error:focus {
+	border: 1px solid #D6412B;
+	box-shadow: 0 0 5px 1px #D17266;
+}
+
+.notfound {
+	font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+	font-size: 0.8rem;
+	color: #D8000C;
+	width: 100%;
+	background-color: #FFBABA;
+	box-shadow: 0 0 5px 1px #D17266;
+	padding: 5px 20px;
+}
+
+.hidden {
+	display: none;
+}
+
+table td.errorClass {
+	padding: 10px;
+}
+
+.insertSuccess {
+	font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+	font-size: 0.8rem;
+	color: #4F8A30;
+	width: 100%;
+	background-color: #DFF2BF;
+	box-shadow: 0 0 5px 1px #DFF2BF;
+	padding: 5px 20px;
+}
