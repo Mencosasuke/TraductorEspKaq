@@ -43,16 +43,17 @@ public class ServletTraducir extends HttpServlet {
             switch(opcion){
                 case "KAQ":
                     campo = "Kaqchikel";
-                    condicion = "WHERE Espanol = \'" + textoEspanol + "\';";
+                    condicion = "WHERE \"Espanol\" = \'" + textoEspanol + "\';";
                     origen = textoEspanol;
                     break;
                 case "ESP":
                     campo = "Espanol";
-                    condicion = "WHERE Kaqchikel = '" + textoKaqchikel + "';";
+                    condicion = "WHERE \"Kaqchikel\" = '" + textoKaqchikel + "';";
                     origen = textoKaqchikel;
                     break;
             }
-            resultado = conexion.ejecutarConsulta("SELECT " + campo + " FROM Diccionario " + condicion);
+            //resultado = conexion.ejecutarConsulta("SELECT " + campo + " FROM Diccionario " + condicion);
+            resultado = conexion.ejecutarConsulta("SELECT \""+ campo + "\" FROM \"Diccionario\"" + condicion);
             try{
                 StringJoiner joiner = new StringJoiner(",");
                 while(resultado.next()){

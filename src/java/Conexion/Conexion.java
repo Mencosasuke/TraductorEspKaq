@@ -7,23 +7,27 @@ public class Conexion {
     private Connection conexion = null;
     private String servidor = "localhost";
     private String database = "Traductor";
-    private String usuario = "root";
-    private String password = "";
+    //private String usuario = "root";
+    //private String password = "";
+    private String usuario = "postgres";
+    private String password = "123";
     private String url = "";
  
     public Conexion(){
         try { 
-            Class.forName("com.mysql.jdbc.Driver");
-            url = "jdbc:mysql://" + servidor + "/" + database;
+            //Class.forName("com.mysql.jdbc.Driver");
+            //url = "jdbc:mysql://" + servidor + "/" + database;
+            url = "jdbc:postgresql://104.236.241.56:5432/" + database;
+            Class.forName("org.postgresql.Driver");
             conexion = DriverManager.getConnection(url, usuario, password);
             System.out.println("Conexion a Base de Datos " + url);
-        }
-        catch (SQLException ex) {
+        } //catch (SQLException ex) {
+        catch (Exception ex) {
             System.out.println(ex);
         }
-        catch (ClassNotFoundException ex) {
+        /*catch (ClassNotFoundException ex) {
             System.out.println(ex);
-        }
+        }*/
     }
  
     public Connection getConexion(){
@@ -51,11 +55,14 @@ public class Conexion {
             resultado = stmt.executeQuery(consulta);
             return resultado;
         }
-        catch (SQLException ex){
+        catch(Exception ex){
+            System.out.println("Excepcion: " + ex.getMessage());
+        }
+        /*catch (SQLException ex){
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
-        }
+        }*/
         
         return null;
     }
@@ -65,7 +72,8 @@ public class Conexion {
         PreparedStatement stmt = null;
         int rows_affected = 0;
         
-        String query = "INSERT INTO Diccionario (Espanol, Kaqchikel) VALUES ( ?, ?)";
+        //String query = "INSERT INTO Diccionario (Espanol, Kaqchikel) VALUES ( ?, ?)";
+        String query = "INSERT INTO \"Diccionario\"(\"Espanol\", \"Kaqchikel\") VALUES (?, ?);";
         
         try {
             stmt = conexion.prepareStatement(query);
@@ -74,11 +82,14 @@ public class Conexion {
             stmt.execute();
             rows_affected = stmt.getUpdateCount();
         }
-        catch (SQLException ex){
+        catch(Exception ex){
+            System.out.println("Excepcion: " + ex.getMessage());
+        }
+        /*catch (SQLException ex){
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
-        }
+        }*/
         
         return rows_affected;
     }
