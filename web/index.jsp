@@ -20,7 +20,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Traductor Español - Kaqchikel</title>
+        <title>Traductor Español - Kiche</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
@@ -32,7 +32,7 @@
     <body>
         <div id="wrapper">
             <div id="header" class="headerDiv">
-                <h1>Traductor Español Kaqchikel</h1>
+                <h1>Traductor Español Kiche</h1>
             </div>
             <div id="content" class="mainDiv">
                 <form action="ServletTraducir" method="POST">
@@ -43,7 +43,7 @@
                                     <label for="txtEspanol">Español</label>
                                 </td>
                                 <td>
-                                    <label for="txtKaqchikel">Kaqchikel</label>
+                                    <label for="txtKaqchikel">Kiche</label>
                                 </td>
                             </tr>
                             <tr>
@@ -67,9 +67,14 @@
                             <tr>
                                 <td colspan="2">
                                     <button id="btnTraducir" name="action" value="traducir">Traducir a</button>
-                                    <select name="txtTraduccion" id="txtTraduccion">
-                                        <option value="KAQ" selected>Kaqchikel</option>
-                                        <option value="ESP">Español</option>
+                                    <select name="txtTraduccion" id="txtTraduccion"><%
+                                    if(request.getAttribute("opcion").equals("ESP")) {
+                                        out.println("<option value='ESP' selected>Español</option>");
+                                        out.println("<option value='KAQ'>Kiche</option>");
+                                    } else {
+                                        out.println("<option value='KAQ' selected>Kiche</option>");
+                                        out.println("<option value='ESP'>Español</option>");
+                                    } %>
                                     </select>
                                     <button id="btnInsertar" name="action" value="insertar">Insertar</button>
                                     <button id="btnLimpiar" name="btnLimpiar">Limpiar</button>
