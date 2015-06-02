@@ -50,8 +50,9 @@ public class ServletTraducir extends HttpServlet {
                 case"KAQ":
                     origen = textoEspanol;
                     // -------------
-                    for(String word : palabrasEspanol){
-                        resultado = conexion.ejecutarConsulta("SELECT \"Kaqchikel\" FROM \"Diccionario\" WHERE \"Espanol\" = \'" + word + "\';");
+                    //for(String word : palabrasEspanol){
+                    for(int i = 0; i < palabrasEspanol.length; i++){
+                        resultado = conexion.ejecutarConsulta("SELECT \"Kaqchikel\" FROM \"Diccionario\" WHERE \"Espanol\" = \'" + palabrasEspanol[i] + "\';");
                         try{
                             String joiner = "";
                             while(resultado.next()){
@@ -60,6 +61,20 @@ public class ServletTraducir extends HttpServlet {
                                 break;
                             }
                             resultado.close();
+                            
+                            if(joiner == ""){
+                                resultado = conexion.ejecutarConsulta("SELECT \"Kaqchikel\" FROM \"Diccionario\" WHERE \"Espanol\" = \'" + palabrasEspanol[i] + " " + palabrasEspanol[i + 1] + "\';");
+                                while(resultado.next()){
+                                    //System.out.println(resultado.getString("Kaqchikel"));
+                                    joiner += resultado.getString("Kaqchikel") + " ";
+                                    break;
+                                }
+                                resultado.close();
+                                
+                                if(joiner != ""){
+                                    i++;
+                                }
+                            }
 
                             traduccion += joiner;
 
@@ -72,8 +87,8 @@ public class ServletTraducir extends HttpServlet {
                 case"ESP":
                     origen = textoKaqchikel;
                     // -------------
-                    for(String word : palabrasKaqchikel){
-                        resultado = conexion.ejecutarConsulta("SELECT \"Espanol\" FROM \"Diccionario\" WHERE \"Kaqchikel\" = '" + word + "';");
+                    for(int i = 0; i < palabrasKaqchikel.length; i++){
+                        resultado = conexion.ejecutarConsulta("SELECT \"Espanol\" FROM \"Diccionario\" WHERE \"Kaqchikel\" = '" + palabrasKaqchikel[i] + "';");
                         try{
                             String joiner = "";
                             while(resultado.next()){
@@ -82,6 +97,19 @@ public class ServletTraducir extends HttpServlet {
                             }
                             resultado.close();
 
+                            if(joiner == ""){
+                                resultado = conexion.ejecutarConsulta("SELECT \"Espanol\" FROM \"Diccionario\" WHERE \"Kaqchikel\" = '" + palabrasKaqchikel[i] + " " + palabrasKaqchikel[i + 1] + "';");
+                                while(resultado.next()){
+                                    joiner += resultado.getString("Espanol") + " ";
+                                    break;
+                                }
+                                resultado.close();
+                                
+                                if(joiner != ""){
+                                    i++;
+                                }
+                            }
+                            
                             traduccion += joiner;
 
                         }catch(Exception ex){
